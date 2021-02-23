@@ -14,3 +14,4 @@ exclude =
 ; this tells the complexity of the code, which is decided on the basis of how many flow are there in the program
 ; read more here - https://en.wikipedia.org/wiki/Cyclomatic_complexity
 max-complexity = 10
+max-line-length = 100
