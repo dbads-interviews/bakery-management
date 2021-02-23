@@ -1,7 +1,7 @@
 {
   "python.pythonPath": "venv/bin/python",
   "python.linting.enabled": true,
-  "python.linting.flake8Enabled": true, // for linting
+  "python.linting.flake8Enabled": true,
   "python.formatting.provider": "autopep8", // fixer
   "editor.defaultFormatter": "esbenp.prettier-vscode", // this is set as default formatter for all the languages in
   "editor.formatOnSave": true,
