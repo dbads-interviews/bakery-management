@@ -1,0 +1,6 @@
+# This configuration is for customizing autopep8 fixer/formatter
+
+[pep8]
+indent-size = 2
+max-line-length = 100
+ignore = E226,E302,E41
