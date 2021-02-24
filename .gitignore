@@ -128,4 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# keep track of todos here
 todo
+
+# store private stuff here
+private
