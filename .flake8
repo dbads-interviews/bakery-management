@@ -1,0 +1,18 @@
+; This configuration is used when using flake8 as linter
+[flake8]
+; ignore the rules
+ignore = D203, E114, E111
+exclude =
+    ; following files/dirs will not be checked for linting issues
+    .git,
+    __pycache__,
+    docs/source/conf.py,
+    build,
+    dist
+    ; don't check for linting issues in virtual environment
+    venv
+; this tells the complexity of the code, which is decided on the basis of how many flow are there in the program
+; read more here - https://en.wikipedia.org/wiki/Cyclomatic_complexity
+max-complexity = 10
+max-line-length = 100
+import-order-style = tbm

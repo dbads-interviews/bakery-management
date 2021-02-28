@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode", // to format everything else except python
+    "ms-python.python", // gives all the basic python tools IntelliSense, linting, debugging, code navigation, code formatting, Jupyter notebook support, refactoring, variable explorer, test explorer, and more!
+    "almenon.arepl", // AREPL automatically evaluates python code in real-time as you type.
+    "njpwerner.autodocstring", // Visual Studio Code extension to quickly generate docstrings for python functions
+    "gruntfuggly.todo-tree" // to add custom tags in project, not necessary
+  ]
+}
