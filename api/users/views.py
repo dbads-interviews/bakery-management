@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from rest_framework import generics, mixins
+from rest_framework import generics, mixins, viewsets
 from .serializers import UserSerializer
 # Create your views here.
 
@@ -7,25 +7,33 @@ from .serializers import UserSerializer
 #   # create user
 
 
-class UserGenericAPIView(generics.GenericAPIView,
-                         mixins.CreateModelMixin, mixins.ListModelMixin,
-                         mixins.DestroyModelMixin, mixins.RetrieveModelMixin,
-                         mixins.UpdateModelMixin):
+class UserListGenericAPIView(
+        generics.GenericAPIView,
+        mixins.CreateModelMixin, mixins.ListModelMixin):
+  serializer_class = UserSerializer
+  queryset = User.objects.all()
+  lookup_field = 'id'
+
+  def get(self, request):
+    return self.list(request)
+
+  def post(self, request):
+    return self.create(request)
+
+
+class UserDetailGenericAPIView(
+        generics.GenericAPIView,
+        mixins.DestroyModelMixin, mixins.RetrieveModelMixin,
+        mixins.UpdateModelMixin):
   serializer_class = UserSerializer
   queryset = User.objects.all()
   lookup_field = 'id'
 
   def get(self, request, id=None):
-    if id:
-      return self.retrieve(request)
-    else:
-      return self.list(request)
-
-  def post(self, request):
-    return self.create(request)
+    return self.retrieve(request)
 
   def put(self, request, id=None):
     return self.update(request, id)
 
-  def delete(self, request):
+  def delete(self, request, id=None):
     return self.destroy(request, id)
