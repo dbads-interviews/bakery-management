@@ -8,6 +8,4 @@ router.register('', UsersViewset, basename='users')
 
 urlpatterns = [
     path('', include(router.urls)),
-    # path('/', UserListGenericAPIView.as_view(), name='user_list'),
-    # path('/<int:id>', UserDetailGenericAPIView.as_view(), name='user_detail'),
 ]
