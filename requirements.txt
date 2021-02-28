@@ -2,6 +2,7 @@ asgiref==3.3.1
 astroid==2.5
 autopep8==1.5.5
 Django==3.1.7
+djangorestframework==3.12.2
 flake8==3.8.4
 importlib-metadata==3.5.0
 isort==5.7.0
