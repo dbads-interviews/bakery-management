@@ -2,10 +2,6 @@ from django.contrib.auth.models import User
 # from rest_framework import generics, mixins, viewsets
 from rest_framework import viewsets
 from .serializers import UserSerializer
-# Create your views here.
-
-# def create_user(request):
-#   # create user
 
 
 # class UserListGenericAPIView(
