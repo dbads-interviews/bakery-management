@@ -15,3 +15,4 @@ exclude =
 ; read more here - https://en.wikipedia.org/wiki/Cyclomatic_complexity
 max-complexity = 10
 max-line-length = 100
+import-order-style = tbm
