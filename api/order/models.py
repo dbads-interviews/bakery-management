@@ -1,10 +1,12 @@
 from django.dispatch import receiver
 from django.db import models
 from django.db.models.signals import pre_save
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from product.models import Product
 
 # Create your models here.
+
+User = get_user_model()
 
 
 class Order(models.Model):
