@@ -10,12 +10,11 @@ APIs for a simple bakery management app written in django
 - install dependencies `pip install -r requirements.txt`
 - make migrations `python manage.py makemigrations`
 - migrate `python manage.py migrate`
+- start the api server `python manage.py runserver`
 
 For Registering/Login/Logout/change password go to `localhost:8000/users/auth/register`, `localhost:8000/users/auth/login`
 
 then
-
-- start the api server `python manage.py runserver`
 
 visit `localhost:8000/users/` for users `localhost:8000/products/` for products and `localhost:8000/orders/` for orders also you can make api requests from postman as per the given psotman collection and environment in this repo
 
