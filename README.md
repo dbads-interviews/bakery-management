@@ -15,6 +15,8 @@ For Registering/Login/Logout/change password go to `localhost:8000/users/auth/re
 
 then
 
+- start the api server `python manage.py runserver`
+
 visit `localhost:8000/users/` for users `localhost:8000/products/` for products and `localhost:8000/orders/` for orders also you can make api requests from postman as per the given psotman collection and environment in this repo
 
 Features
