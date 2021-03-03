@@ -13,6 +13,8 @@ class OrderViewset(viewsets.ModelViewSet):
   permission_classes = [IsAuthenticated]
 
   def list(self, request):
-    orders = Order.objects.filter(user__id=request.user.id)
-    orders = self.serializer_class(orders, many=True)
-    return Response(orders.data)
+    if not request.user.is_staff:
+      orders = Order.objects.filter(user__id=request.user.id)
+      orders = self.serializer_class(orders, many=True)
+      return Response(orders.data)
+    return super().list(self, request)
