@@ -9,7 +9,7 @@ User = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
   class Meta:
     model = User
-    fields = ['email', 'first_name', 'last_name']
+    fields = ['id', 'email', 'first_name', 'last_name', 'is_staff', 'is_superuser']
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):
@@ -19,7 +19,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = User
-    fields = ('id', 'email', 'password', 'first_name', 'last_name', 'role')
+    fields = ('id', 'email', 'password', 'first_name', 'last_name')
 
   def validate_email(self, value):
     user = User.objects.filter(email=value)
