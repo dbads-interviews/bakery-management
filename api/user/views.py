@@ -3,8 +3,9 @@ from django.core.exceptions import ImproperlyConfigured
 from django.contrib.auth import logout, get_user_model
 
 from rest_framework import viewsets, status
+from rest_framework.authtoken.models import Token
 from rest_framework.decorators import action
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
 from . import serializers
@@ -16,6 +17,7 @@ User = get_user_model()
 class UsersViewset(viewsets.ModelViewSet):
   serializer_class = serializers.UserSerializer
   queryset = User.objects.all()
+  permission_classes = [IsAuthenticated, IsAdminUser]
 
 
 class AuthViewSet(viewsets.GenericViewSet):
@@ -25,6 +27,7 @@ class AuthViewSet(viewsets.GenericViewSet):
       'login': serializers.UserLoginSerializer,
       'register': serializers.UserRegisterSerializer,
   }
+  queryset = ''
 
   @action(methods=['POST', ], detail=False)
   def login(self, request):
@@ -44,6 +47,7 @@ class AuthViewSet(viewsets.GenericViewSet):
 
   @action(methods=['POST', ], detail=False)
   def logout(self, request):
+    # Token.objects.get(user=request.user).delete()
     logout(request)
     data = {'success': 'Sucessfully logged out'}
     return Response(data=data, status=status.HTTP_200_OK)
