@@ -12,11 +12,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Order',
+            name='Product',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('total', models.IntegerField(blank=True, null=True)),
-                ('items', models.CharField(max_length=300)),
+                ('name', models.CharField(blank=True, max_length=50)),
+                ('price', models.IntegerField(blank=True, null=True)),
             ],
         ),
     ]
