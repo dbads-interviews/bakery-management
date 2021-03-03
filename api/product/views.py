@@ -1,5 +1,4 @@
 from .models import Product
-# from rest_framework import generics, mixins, viewsets
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .serializers import ProductSerializer
