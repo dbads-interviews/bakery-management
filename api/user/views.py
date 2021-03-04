@@ -1,9 +1,10 @@
 # from rest_framework import generics, mixins, viewsets
 from django.core.exceptions import ImproperlyConfigured
 from django.contrib.auth import logout, get_user_model
+from django.shortcuts import get_object_or_404
 
 from rest_framework import viewsets, status
-from rest_framework.authtoken.models import Token
+# from rest_framework.authtoken.models import Token
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
@@ -17,7 +18,13 @@ User = get_user_model()
 class UsersViewset(viewsets.ModelViewSet):
   serializer_class = serializers.UserSerializer
   queryset = User.objects.all()
-  permission_classes = [IsAuthenticated, IsAdminUser]
+  permission_classes = [IsAdminUser]
+
+  @action(methods=['GET'], detail=False)
+  def profile(self, request):
+    user = get_object_or_404(User, id=request.user.id)
+    serialized_user = self.serializer_class(user)
+    return Response(serialized_user.data, status=status.HTTP_200_OK)
 
 
 class AuthViewSet(viewsets.GenericViewSet):
