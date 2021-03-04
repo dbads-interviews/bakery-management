@@ -12,7 +12,7 @@ APIs for a simple bakery management app written in django
 - migrate `python manage.py migrate`
 - start the api server `python manage.py runserver`
 
-For Registering/Login/Logout/change password go to `localhost:8000/users/auth/register`, `localhost:8000/users/auth/login`
+For Registering/Login/Logout/change password go to `localhost:8000/auth/register`, `localhost:8000/auth/login`
 
 then
 
