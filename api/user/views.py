@@ -1,6 +1,6 @@
-# from rest_framework import generics, mixins, viewsets
 from django.core.exceptions import ImproperlyConfigured
-from django.contrib.auth import logout, get_user_model
+# from rest_framework import generics, mixins, viewsets
+from django.contrib.auth import login as user_login, logout, get_user_model
 from django.shortcuts import get_object_or_404
 
 from rest_framework import viewsets, status
@@ -41,6 +41,7 @@ class AuthViewSet(viewsets.GenericViewSet):
     serializer = self.get_serializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     user = get_and_authenticate_user(**serializer.validated_data)
+    user_login(request, request.user)
     data = serializers.AuthUserSerializer(user).data
     return Response(data=data, status=status.HTTP_200_OK)
 
@@ -55,8 +56,9 @@ class AuthViewSet(viewsets.GenericViewSet):
   @action(methods=['POST', ], detail=False)
   def logout(self, request):
     # Token.objects.get(user=request.user).delete()
+    serialized_user = serializers.UserSerializer(request.user)
     logout(request)
-    data = {'success': 'Sucessfully logged out'}
+    data = {'user': serialized_user.data, 'success': 'Sucessfully logged out', }
     return Response(data=data, status=status.HTTP_200_OK)
 
   @action(methods=['POST'], detail=False, permission_classes=[IsAuthenticated, ])
