@@ -12,7 +12,13 @@
 					"name": "List products",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "2ec32745d69a9602f99c96e4add6cfb195f47b58",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{api_base}}/products/",
 							"host": [
@@ -209,7 +215,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{   \n    \"username\": \"{{$randomUserName}}\",\n    \"password\": \"{{$randomPassword}}\"\n}",
+							"raw": "{   \n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\",\n    \"role\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -217,12 +223,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_base}}/users/",
+							"raw": "{{api_base}}/users/register/",
 							"host": [
 								"{{api_base}}"
 							],
 							"path": [
 								"users",
+								"register",
 								""
 							]
 						}
@@ -336,6 +343,80 @@
 							],
 							"path": [
 								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"deepakbharti823@gmail.com\",\n    \"password\": \"_simple_@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_base}}/users/auth/login/",
+							"host": [
+								"{{api_base}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api_base}}/users/auth/logout/",
+							"host": [
+								"{{api_base}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"logout",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api_base}}/users/auth/register/",
+							"host": [
+								"{{api_base}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"register",
 								""
 							]
 						}
